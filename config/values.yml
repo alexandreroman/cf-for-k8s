@@ -25,10 +25,6 @@ images:
   capi: ""
   nginx: ""
   cfroutesync: ""
-  log_cache: "logcache/log-cache"
-  syslog_server: "logcache/syslog-server"
-  log_cache_gateway: "logcache/log-cache-gateway"
-  fluent: "logcache/cf-k8s-logging"
 
 system_certificate:
   #! Base64-encoded certificate for the wildcard
@@ -129,6 +125,10 @@ log_cache_gateway:
 log_cache_syslog:
   crt: "" #! Base64-encoded cert for the log cache syslog server requires CN of log-cache-syslog
   key: "" #! Base64-encoded private key for the cert above
+
+log_cache_client:
+  id: "" #! comment
+  secret: "" #! comment
 
 docker_registry:
   http_secret: "" #! A random piece of data used to sign state that may be stored with the client to protect against tampering. For production environments you should generate a random piece of data using a cryptographically secure random generator.
