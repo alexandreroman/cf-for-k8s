@@ -8,7 +8,7 @@
 system_domain: #@ data.values.system_domain
 system_namespace: #@ data.values.system_namespace
 
-log_cache_ca: 
+log_cache_ca:
   crt: #@ data.values.log_cache_ca.crt
   key: #@ data.values.log_cache_ca.key
 
@@ -35,13 +35,3 @@ client:
 
 #@ logging = library.get("github.com/cloudfoundry/cf-k8s-logging")
 --- #@ template.replace(logging.with_data_values(logging_values()).eval())
-
----
-apiVersion: v1
-kind: Secret
-type: Opaque
-metadata:
-  name: system-ca
-  namespace: #@ data.values.system_namespace
-data:
-  tls.crt: #@ data.values.system_certificate.crt
