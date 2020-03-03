@@ -65,7 +65,8 @@ Make sure that your Kubernetes config (e.g, `~/.kube/config`) is pointing to the
 1. Set up cf cli to point to CF:
    ```bash
    $ cf api --skip-ssl-validation https://api.<system_domain>
-   $ cf auth admin <cf_admin_password>
+   $ CF_ADMIN_PASSWORD=`grep cf_admin_password /tmp/cf-values.yml | yq -r '.cf_admin_password'`
+   $ cf auth admin $CF_ADMIN_PASSWORD
    ```
 
 1. Enable docker feature:
